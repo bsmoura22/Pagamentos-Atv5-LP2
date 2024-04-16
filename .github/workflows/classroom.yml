@@ -1,0 +1,183 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: CartaoTest.existsCartao
+      id: cartaotest-existscartao
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: CartaoTest.existsCartao
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.CartaoTest.existsCartao
+        timeout: 1
+    - name: CartaoTest.existsMethodDebitar
+      id: cartaotest-existsmethoddebitar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: CartaoTest.existsMethodDebitar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.CartaoTest.existsMethodDebitar
+        timeout: 1
+    - name: CartaoTest.existsMethodEstornar
+      id: cartaotest-existsmethodestornar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: CartaoTest.existsMethodEstornar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.CartaoTest.existsMethodEstornar
+        timeout: 1
+    - name: CartaoTest.debitar
+      id: cartaotest-debitar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: CartaoTest.debitar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.CartaoTest.debitar
+        timeout: 1
+    - name: CartaoTest.estornar
+      id: cartaotest-estornar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: CartaoTest.estornar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.CartaoTest.estornar
+        timeout: 10
+    - name: MetodoPagamentoTest.existsMetodoPagamento
+      id: metodopagamentotest-existsmetodopagamento
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: MetodoPagamentoTest.existsMetodoPagamento
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.MetodoPagamentoTest.existsMetodoPagamento
+        timeout: 10
+    - name: MetodoPagamentoTest.metodoPagamentoIsInterface
+      id: metodopagamentotest-metodopagamentoisinterface
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: MetodoPagamentoTest.metodoPagamentoIsInterface
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.MetodoPagamentoTest.metodoPagamentoIsInterface
+        timeout: 1
+    - name: MetodoPagamentoTest.existsMethodDebitar
+      id: metodopagamentotest-existsmethoddebitar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: MetodoPagamentoTest.existsMethodDebitar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.MetodoPagamentoTest.existsMethodDebitar
+        timeout: 10
+    - name: MetodoPagamentoTest.existsMethodEstornar
+      id: metodopagamentotest-existsmethodestornar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: MetodoPagamentoTest.existsMethodEstornar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.MetodoPagamentoTest.existsMethodEstornar
+        timeout: 10
+    - name: PixTest.debitar
+      id: pixtest-debitar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: PixTest.debitar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.PixTest.debitar
+        timeout: 10
+    - name: PixTest.estornar
+      id: pixtest-estornar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: PixTest.estornar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.PixTest.estornar
+        timeout: 10
+    - name: " ProcessadorPagamentosTest.existsProcessadorPagamentos"
+      id: processadorpagamentostest-existsprocessadorpagamentos
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: " ProcessadorPagamentosTest.existsProcessadorPagamentos"
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.existsProcessadorPagamentos
+        timeout: 10
+    - name: ProcessadorPagamentosTest.existsMethodProcessar
+      id: processadorpagamentostest-existsmethodprocessar
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.existsMethodProcessar
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.existsMethodProcessar
+        timeout: 1
+    - name: ProcessadorPagamentosTest.onlyPix
+      id: processadorpagamentostest-onlypix
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.onlyPix
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.onlyPix
+        timeout: 1
+    - name: ProcessadorPagamentosTest.onlyCartao
+      id: processadorpagamentostest-onlycartao
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.onlyCartao
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.onlyCartao
+        timeout: 1
+    - name: ProcessadorPagamentosTest.pixAndCartao
+      id: processadorpagamentostest-pixandcartao
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.pixAndCartao
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.pixAndCartao
+        timeout: 10
+    - name: ProcessadorPagamentosTest.variosCartoes
+      id: processadorpagamentostest-varioscartoes
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.variosCartoes
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.variosCartoes
+        timeout: 1
+    - name: ProcessadorPagamentosTest.variosPix
+      id: processadorpagamentostest-variospix
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: ProcessadorPagamentosTest.variosPix
+        setup-command: ''
+        command: gradle test --tests br.ufrn.imd.ProcessadorPagamentosTest.variosPix
+        timeout: 10
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        CARTAOTEST-EXISTSCARTAO_RESULTS: "${{steps.cartaotest-existscartao.outputs.result}}"
+        CARTAOTEST-EXISTSMETHODDEBITAR_RESULTS: "${{steps.cartaotest-existsmethoddebitar.outputs.result}}"
+        CARTAOTEST-EXISTSMETHODESTORNAR_RESULTS: "${{steps.cartaotest-existsmethodestornar.outputs.result}}"
+        CARTAOTEST-DEBITAR_RESULTS: "${{steps.cartaotest-debitar.outputs.result}}"
+        CARTAOTEST-ESTORNAR_RESULTS: "${{steps.cartaotest-estornar.outputs.result}}"
+        METODOPAGAMENTOTEST-EXISTSMETODOPAGAMENTO_RESULTS: "${{steps.metodopagamentotest-existsmetodopagamento.outputs.result}}"
+        METODOPAGAMENTOTEST-METODOPAGAMENTOISINTERFACE_RESULTS: "${{steps.metodopagamentotest-metodopagamentoisinterface.outputs.result}}"
+        METODOPAGAMENTOTEST-EXISTSMETHODDEBITAR_RESULTS: "${{steps.metodopagamentotest-existsmethoddebitar.outputs.result}}"
+        METODOPAGAMENTOTEST-EXISTSMETHODESTORNAR_RESULTS: "${{steps.metodopagamentotest-existsmethodestornar.outputs.result}}"
+        PIXTEST-DEBITAR_RESULTS: "${{steps.pixtest-debitar.outputs.result}}"
+        PIXTEST-ESTORNAR_RESULTS: "${{steps.pixtest-estornar.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-EXISTSPROCESSADORPAGAMENTOS_RESULTS: "${{steps.processadorpagamentostest-existsprocessadorpagamentos.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-EXISTSMETHODPROCESSAR_RESULTS: "${{steps.processadorpagamentostest-existsmethodprocessar.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-ONLYPIX_RESULTS: "${{steps.processadorpagamentostest-onlypix.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-ONLYCARTAO_RESULTS: "${{steps.processadorpagamentostest-onlycartao.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-PIXANDCARTAO_RESULTS: "${{steps.processadorpagamentostest-pixandcartao.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-VARIOSCARTOES_RESULTS: "${{steps.processadorpagamentostest-varioscartoes.outputs.result}}"
+        PROCESSADORPAGAMENTOSTEST-VARIOSPIX_RESULTS: "${{steps.processadorpagamentostest-variospix.outputs.result}}"
+      with:
+        runners: cartaotest-existscartao,cartaotest-existsmethoddebitar,cartaotest-existsmethodestornar,cartaotest-debitar,cartaotest-estornar,metodopagamentotest-existsmetodopagamento,metodopagamentotest-metodopagamentoisinterface,metodopagamentotest-existsmethoddebitar,metodopagamentotest-existsmethodestornar,pixtest-debitar,pixtest-estornar,processadorpagamentostest-existsprocessadorpagamentos,processadorpagamentostest-existsmethodprocessar,processadorpagamentostest-onlypix,processadorpagamentostest-onlycartao,processadorpagamentostest-pixandcartao,processadorpagamentostest-varioscartoes,processadorpagamentostest-variospix
