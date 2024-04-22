@@ -5,8 +5,14 @@ public class Cartao implements MetodoPagamento{
 
     }
 
-    public boolean debitar{
+
+    @Override
+    public boolean debitar() {
         return false;
     }
 
+    @Override
+    public void estornar() {
+
+    }
 }

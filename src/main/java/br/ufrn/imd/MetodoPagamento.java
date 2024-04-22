@@ -1,4 +1,7 @@
 package br.ufrn.imd;
 
-public interface MetodoPagamento {
+interface MetodoPagamento {
+    boolean debitar();
+    void estornar();
+}
 }
